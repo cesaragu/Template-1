@@ -1,0 +1,15 @@
+# directories
+build/
+
+# files
+*.bin
+*.elf
+*.map
+*.list
+*.d
+*.o
+*.su
+
+# exceptions
+!objects.list
+
