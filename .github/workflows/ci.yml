@@ -12,10 +12,11 @@ jobs:
           cd build
           cmake .. -G"Unix Makefiles"
           make
-  run-tests:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name : Run Tests
-        run: ./run_tests
+          ./run_tests
+  #run-tests:
+  #  needs: build
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name : Run Tests
+  #      run: ./run_tests
   
