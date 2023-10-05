@@ -13,6 +13,8 @@ jobs:
           cmake .. -G"Unix Makefiles"
           make
       - name: test
-        run: ./run_tests
+        run: |
+          cd build
+          ./run_tests
           
   
