@@ -12,7 +12,7 @@ jobs:
           cd build
           cmake .. -G"Unix Makefiles"
           make
-      -name: test
+      - name: test
         run: ./run_tests
           
   
