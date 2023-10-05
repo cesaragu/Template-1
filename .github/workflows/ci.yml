@@ -6,17 +6,23 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: "./build"
+          key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-${{ hashFiles('**/lockfiles') }}
       - name: CMake
         run: |
           mkdir build
           cd build
           cmake .. -G"Unix Makefiles"
           make
+  run-tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name : Run Tests
+        run: |
+           cd build
           ./run_tests
-  #run-tests:
-  #  needs: build
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - name : Run Tests
-  #      run: ./run_tests
   
