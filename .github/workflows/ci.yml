@@ -1,0 +1,20 @@
+name: ci-template
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: CMake
+        run: |
+          mkdir build
+          cd build
+          cmake .. -G"Unix Makefiles"
+          make
+  run-tests:
+    needs: build
+    steps:
+      - name : Run Tests
+        run: ./run_tests
+  
